@@ -1,9 +1,9 @@
 
 
 /*
-hacer una función que me acepte como parametro una variable con el path
+hacer una función que me acepte como parámetro una variable con el path
 del archivo y el contenido a agregar al contenido del archivo la función
-debe tomar estos dos parametros y leer el archivo y añadir el texto al final
+debe tomar estos dos parámetros y leer el archivo y añadir el texto al final
 del archivo
  */
 
