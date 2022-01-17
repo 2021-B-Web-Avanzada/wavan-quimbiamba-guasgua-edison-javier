@@ -1,64 +1,66 @@
-const inquired = require("inquirer");
-const fs = require("fs") // para leer el archivo
-const historial = require('./historial-veterinario.js')
-
- const  ingresoVeterinaria =()=> {
-    return inquired.prompt(
+const inquirer = require("inquirer");
+const fs = require("fs");
+const ga = require('./gestion-archivos.js')
+const ingresoVeterinaria = () => {
+    return inquirer.prompt(
         [
             {
-                type : 'input',
+                type: 'input',
                 name: 'nombre',
-                message: 'Ingrese el nombre del restaurant'
+                message: 'Ingrese el nombre de la veterinaria'
             },
             {
-                type : 'input',
-                name: 'Fecha_de_registro',
-                message: 'Ingrese la fecha de registro de la veterinaria'
-
+                type: 'input',
+                name: 'fecha_apertura',
+                message: 'Ingresa la fecha de apertura de la veterinaria'
             },
-
             {
                 type: 'input',
                 name: 'direccion',
-                message: 'Ingresa la direccion de la veterinaria '
+                message: 'Ingresa la dirección de la veterinaria'
             },
             {
                 type: 'input',
                 name: 'estrellas',
-                message: 'Ingrese el número de estrellas de la veterinaria'
+                message: 'Ingresa el numero de estrellas del veterinaria'
             },
             {
                 type: 'input',
                 name: 'categoria',
-                message: 'Ingrese la categoría de la veterinaria, publica o privada'
+                message: 'Ingresa la categoria del veterianaria'
             }
         ]
     )
 }
 
 async function crearVeterinaria() {
-    const  veterinaria = await  ingresoVeterinaria();
-    veterinaria.menu = []
-    let fileContent  = fs.readFileSync('./datos.txt', 'utf-8')
-    let jsonFile;
-    jsonFile = JSON.parse(fileContent)
+    const veterinaria = await ingresoVeterinaria();
+    veterinaria.mascota = []
+    let fileContent = fs.readFileSync('./ejem.txt', 'utf-8')
+    let jsonFile = JSON.parse(fileContent)
     jsonFile.push(veterinaria)
-    await historial.escribirArchivo(jsonFile)
+    await ga.escribirArchivo(jsonFile)
+}
+
+async function listarVeterinaria() {
+    let fileContent = fs.readFileSync('./ejem.txt', 'utf-8')
+    let jsonFile = JSON.stringify(JSON.parse(fileContent), null, '    ')
+    console.log(jsonFile)
 }
 
 async function actualizarVeterinaria() {
-    let fileContent = fs.readFileSync("./datos.text", "utf-8")
+    let fileContent = fs.readFileSync('./ejem.txt', 'utf-8')
     let jsonFile = JSON.parse(fileContent)
-    let  veterinarias = [];
-    jsonFile.forEach( element => {
-        veterinarias.push(element.nombre);
+    let veterinaria = [];
+    jsonFile.forEach(element => {
+        veterinaria.push(element.nombre);
     })
     const seleccion = await inquirer.prompt([
         {
             type: 'list',
             name: 'option',
-            message: 'Escoja una veterinaria: ',
-            choices: veterinarias,
+            message: 'Escoja un veterinaria: ',
+            choices: veterinaria,
         },
     ])
     let indexUpdate = jsonFile.findIndex(
@@ -68,45 +70,38 @@ async function actualizarVeterinaria() {
             }
         }
     )
-    const veterinaria = await ingresoVeterinaria();
-    let menuAux = jsonFile[indexUpdate].menu
-    jsonFile[indexUpdate] = veterinaria
-    jsonFile[indexUpdate].menu = menuAux
-    await historial.escribirArchivo(jsonFile)
+    const veterinariaIn = await ingresoVeterinaria();
+    let menuAux = jsonFile[indexUpdate].mascota
+    jsonFile[indexUpdate] = veterinariaIn
+    jsonFile[indexUpdate].mascota = menuAux
+    await ga.escribirArchivo(jsonFile)
 }
 
 async function eliminarVeterinaria() {
-    let fileContent = fs.readFileSync("./datos.txt", "utf-8")
+    let fileContent = fs.readFileSync('./ejem.txt', 'utf-8')
     let jsonFile = JSON.parse(fileContent)
-    let veterinarias = [];
-    jsonFile.forEach( element => {
-        veterinarias.push(element.nombre)
+    let veterinaria = [];
+    jsonFile.forEach(element => {
+        veterinaria.push(element.nombre);
     })
-    const seleccion = await  inquired.prompt([
+    const seleccion = await inquirer.prompt([
         {
             type: 'list',
             name: 'option',
-            message: 'Escoja una veterinaria: ',
-            choices: veterinarias, },
-        ])
-
+            message: 'Escoja un veterinaria',
+            choices: veterinaria,
+        },
+    ])
     let indexUpdate = jsonFile.findIndex(
-        function (res_actual, index){
-            if(res_actual.nombre === seleccion.option){
+        function (res_actual, index) {
+            if (res_actual.nombre === seleccion.option) {
                 return index
             }
         }
     )
-    jsonFile.splice(indexUpdate,1)
-    await  historial.escribirArchivo(jsonFile)
+    jsonFile.splice(indexUpdate, 1)
+    await ga.escribirArchivo(jsonFile)
+
 }
 
-async function listarVeterinarias(){
-    let  fileContent = fs.readFileSync("./datos.txt", "utf-8")
-    let  jasonFile = JSON.stringify(JSON.parse(fileContent), null, ' ')
-    console.log(jasonFile)
-}
-
-
-
-module.exports = {crearVeterinaria, listarVeterinarias, actualizarVeterinaria, eliminarVeterinaria}
+module.exports = {crearVeterinaria, listarVeterinaria , actualizarVeterinaria, eliminarVeterinaria}

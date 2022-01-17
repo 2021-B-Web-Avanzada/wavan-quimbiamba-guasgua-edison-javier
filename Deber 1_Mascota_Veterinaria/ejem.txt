@@ -1,0 +1,104 @@
+[
+	{
+		"nombre": "sdfffsf",
+		"fecha_apertura": "dfdsf",
+		"direccion": "sf",
+		"estrellas": "f",
+		"categoria": "fs",
+		"menu": [
+			{
+				"nombre_plato": "fsd",
+				"descripcion": "ddsf",
+				"precio": "",
+				"tipo": "d",
+				"vegano": "true"
+			}
+		]
+	},
+	{
+		"nombre": "rere",
+		"fecha_apertura": "erer",
+		"direccion": "rere",
+		"estrellas": "rere",
+		"categoria": "rere",
+		"menu": []
+	},
+	{
+		"nombre": "dede",
+		"fecha_apertura": "dede",
+		"direccion": "dede",
+		"estrellas": "dede",
+		"categoria": "dede",
+		"menu": []
+	},
+	{
+		"nombre": "vet wil",
+		"fecha_apertura": "12/12/12",
+		"direccion": "equinoccio",
+		"estrellas": "5",
+		"categoria": "publica"
+	},
+	{
+		"nombre": "323223",
+		"fecha_apertura": "2323",
+		"direccion": "2323",
+		"estrellas": "2323",
+		"categoria": "2332",
+		"menu": []
+	},
+	{
+		"nombre": "1212",
+		"fecha_apertura": "1212",
+		"direccion": "1212",
+		"estrellas": "1221",
+		"categoria": "1221",
+		"menu": []
+	},
+	{
+		"nombre": "3",
+		"fecha_apertura": "121",
+		"direccion": "1212",
+		"estrellas": "121",
+		"categoria": "1212",
+		"menu": []
+	},
+	{
+		"nombre": "ori veterinaria",
+		"fecha_apertura": "12/12/15",
+		"direccion": "quito valle de los chillos",
+		"estrellas": "154",
+		"categoria": "publica",
+		"mascota": [
+			{
+				"nombre_mascota": "ori mascota",
+				"descripcion": "gato blanco",
+				"precio": "1231323",
+				"tipo": "12",
+				"esterilizado": "true"
+			},
+			{
+				"nombre_mascota": "andres ",
+				"descripcion": "reptil",
+				"precio": "515185",
+				"tipo": "reptil",
+				"esterilizado": "false"
+			}
+		]
+	},
+	{
+		"nombre": "12",
+		"fecha_apertura": "12",
+		"direccion": "12",
+		"estrellas": "12",
+		"categoria": "12",
+		"mascota": []
+	},
+	{
+		"nombre": "Veterinaria",
+		"fecha_apertura": "12/12/12",
+		"direccion": "el valle",
+		"estrellas": "5",
+		"categoria": "publica",
+		"mascota": []
+	}
+]

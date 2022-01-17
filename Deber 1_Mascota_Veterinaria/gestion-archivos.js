@@ -1,26 +1,20 @@
-const fs = require('fs')
+const fs = require('fs');
 
 const escribirArchivo = (datos) => {
     return new Promise(
         (resolve, reject) => {
-
-            fs.writeFile('/.datos.txt',
-                JSON.stringify(datos, null, '\t'), 'utf-8',
-
+            fs.writeFile('./ejem.txt',
+                JSON.stringify(datos, null, '\t'),
+                'utf-8',
                 (error) => {
                     if (error) {
                         reject(error)
                     } else {
-                        console.log('Acción satisfactoria')
+                        console.log('Acción realizada con exito')
                         resolve();
                     }
-
-                }
-            )
+                })
         }
     )
-
-
 }
-
-module.exports = { escribirArchivo}
+module.exports = {escribirArchivo}
